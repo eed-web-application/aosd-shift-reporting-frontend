@@ -1,0 +1,26 @@
+/* Sidebar.css */
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: #ddd;
+}

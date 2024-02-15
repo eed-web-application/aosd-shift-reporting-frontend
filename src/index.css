@@ -5,8 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* additions here for pro-sidebar Poonam*/
+  height: 100vh;
+  background: #ffffff;
+  font-size: 24px;
 }
-
+.app {
+  background: #a8d5e5;
+}
+h1 {
+  color: #165a72;
+  margin: 50px auto;
+  font-size: 40px;
+}
+.menu1 {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+h2 {
+  color: #165a72;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

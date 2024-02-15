@@ -31,29 +31,6 @@ function DataTable() {
 
   
   return (
-    // <div>
-    //   {/* Display the data in a table */}
-    //   <table>
-    //     <thead>
-    //       <tr>
-    //         <th>Area Id</th>
-    //         <th>Area Code</th>
-    //         <th>Area Name</th>
-    //         {/* Add more table headers for each column */}
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {data.map(item => (
-    //         <tr key={item.area_id}>
-    //           <td>{item.area_id}</td>
-    //           <td>{item.area_code}</td>
-    //           <td>{item.area}</td>
-    //           {/* Render additional columns here */}
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </div>
     <div className="ag-theme-alpine" style={{ height: 644, width: '80%' }}>
     <AgGridReact
       columnDefs={columnDefs}

@@ -1,11 +1,23 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function(app) {
+  // Proxy middleware for api/shiftdata
   app.use(
-    '/api',
+    '/api/shiftdata',
     createProxyMiddleware({
       target: 'http://localhost:3001',
       changeOrigin: true,
-      //pathRewrite: {'^/api': ''},
+      //pathRewrite: {'^/api/shiftdata': ''},
     })
   );
+
+   // Proxy middleware for api/programdata
+   app.use(
+    '/api/programdata',
+    createProxyMiddleware({
+      target: 'http://localhost:3002',
+      changeOrigin: true,
+      //pathRewrite: {'^/api/programdata': ''},
+    })
+  );
+
 };
