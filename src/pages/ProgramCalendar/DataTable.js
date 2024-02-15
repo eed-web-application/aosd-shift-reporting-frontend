@@ -10,7 +10,7 @@ function DataTable() {
 
   useEffect(() => {
     // Make an API request to fetch data from your backend server
-    axios.get('http://localhost:3001')
+    axios.get('http://localhost:3001/programdata')
       .then(response => {
         setData(response.data);
       })
