@@ -1,0 +1,13 @@
+name: BuildTestAndCreateDist
+on: 
+  push:
+      branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+    build:
+      uses: eed-web-application/aosd-shift-reporting-frontend-deployment/.github/workflows/create-image.yml@main
+      secrets: inherit
+
