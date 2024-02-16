@@ -1,0 +1,14 @@
+name: BuildAndTest
+on: 
+  pull_request:
+    types:
+      - opened
+      - synchronize
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+    build:
+        uses: eed-web-application/aosd-shift-reporting-frontend-deployment/.github/workflows/build-test.yml@main
+        secrets: inherit
+
