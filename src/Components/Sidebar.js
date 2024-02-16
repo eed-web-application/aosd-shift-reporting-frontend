@@ -93,6 +93,22 @@ function Sidebar() {
           </Link>
         </div>
 
+        <div>
+          <Link to="/BeamDest">
+            <button
+              onClick={() => handleClick("BeamDestination", "/BeamDestination")}
+              className={`icon-button ${
+                activeButton === "/BeamDestination" ? "active-button" : ""
+              }`}
+            >
+              <div className="button-label">
+                <FontAwesomeIcon icon={faBox} className="icon" title="Beam Destination" />
+                <span className="label">BeamDestination</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+
       </ul>
     </div>
 

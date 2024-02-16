@@ -14,7 +14,7 @@ module.exports = function(app) {
    app.use(
     '/api/programdata',
     createProxyMiddleware({
-      target: 'http://localhost:3002',
+      target: 'http://localhost:3001',
       changeOrigin: true,
       //pathRewrite: {'^/api/programdata': ''},
     })
