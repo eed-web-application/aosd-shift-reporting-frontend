@@ -13,7 +13,7 @@ function ProgramCalendar() {
   
   function getProgram() {
     console.log("Calling getProgram...");
-    fetch('http://localhost:3001/programdata')
+    fetch('/api/aosd-shift-reporting-backend/programdata')
       .then(response => {
         return response.text();
       })

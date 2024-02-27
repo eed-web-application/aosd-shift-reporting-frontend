@@ -6,7 +6,7 @@ import DataTable from './DataTable.js'; // Import the DataTable component
 import { Button } from 'react-bootstrap'; // Import Bootstrap Button component
 
 //import { format } from 'date-fns';
-import moment from 'moment';
+//import moment from 'moment';
 
 function ShiftCalendar() {
   const [shiftdata, setShiftCal] = useState(false);
@@ -16,7 +16,7 @@ function ShiftCalendar() {
   
   function getShiftCal() {
     console.log("Calling getShiftCal...");
-    fetch('http://localhost:3001')
+    fetch('/api/aosd-shift-reporting-backend/')
       .then(response => {
         return response.text();
       })
@@ -27,7 +27,7 @@ function ShiftCalendar() {
   function createShiftCal() {
     let start_time = prompt('Enter Shift start time');
     let end_time = prompt('Enter Shift end time');
-    fetch('http://localhost:3001/shiftdata', {
+    fetch('/api/aosd-shift-reporting-backend/shiftdata', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function ShiftCalendar() {
   }
   function deleteShiftCal() {
     let id = prompt('Enter Shift Id');
-    fetch(`http://localhost:3001/shiftdata/${id}`, {
+    fetch(`/api/aosd-shift-reporting-backend/shiftdata/${id}`, {
       method: 'DELETE',
     })
       .then(response => {
