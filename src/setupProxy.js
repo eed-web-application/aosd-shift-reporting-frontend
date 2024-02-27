@@ -2,22 +2,23 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function(app) {
   // Proxy middleware for api/shiftdata
   app.use(
-    '/api/shiftdata',
+    '/api/aosd-shift-reporting-backend',
     createProxyMiddleware({
-      target: 'http://localhost:3001',
+      target: 'https://accel-webapp-dev.slac.stanford.edu',
       changeOrigin: true,
-      //pathRewrite: {'^/api/shiftdata': ''},
+      secure: true,
+      //pathRewrite: {'/api/aosd-shift-reporting-backend': ''},
     })
   );
-
+/*
    // Proxy middleware for api/programdata
    app.use(
-    '/api/programdata',
+    '/api/aosd-shift-reporting-backend/programdata',
     createProxyMiddleware({
       target: 'http://localhost:3001',
       changeOrigin: true,
-      //pathRewrite: {'^/api/programdata': ''},
+      pathRewrite: {'^/api/aosd-shift-reporting-backend/programdata': ''},
     })
   );
-
+*/
 };

@@ -10,8 +10,7 @@ function DataTable() {
 
   useEffect(() => {
     // Make an API request to fetch data from your backend server
-//    axios.get('/api/aosd-shift-reporting-backend')
-    fetch('/api/aosd-shift-reporting-backend')
+    axios.get('http://localhost:3001/beamdest')
       .then(response => {
         setData(response.data);
       })
@@ -23,16 +22,13 @@ function DataTable() {
 
     // Define the column definitions for Ag-Grid
     const columnDefs = [
-      { headerName: 'Shift Id', field: 'shift_id', sortable: true, filter: true },
-      { headerName: 'Start Time', field: 'start_time', sortable: true, filter: true },
-      { headerName: 'End Time', field: 'end_time', sortable: true, filter: true },
-      
-      // Add more columns as needed
-    ];
+      { headerName: 'Beam Dest Id', field: 'beam_dest_id', sortable: true, filter: true },
+      { headerName: 'Beam Destination', field: 'beam_destination', sortable: true, filter: true },
+        ];
 
   
   return (
-    <div className="ag-theme-alpine" style={{ height: 644, width: '80%' }}>
+    <div className="ag-theme-alpine" style={{ height: 644, width: '60%' }}>
     <AgGridReact
       columnDefs={columnDefs}
       rowData={data}
