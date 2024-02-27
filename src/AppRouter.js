@@ -9,7 +9,7 @@ import Layout from './layout/Layout';
 
 function AppRouter() {
   return (
-    <Router>
+    <Router basename="/aosd-shift-reporting-frontend">
      <div className="app">
       <Layout>
        <Sidebar />
