@@ -16,7 +16,7 @@ function BeamDest() {
   
   function getBeamDest() {
     console.log("Calling getBeamDest...");
-    fetch('http://localhost:3001/beamdest')
+    fetch('/api/aosd-shift-reporting-backend/beamdest')
       .then(response => {
         return response.text();
       })
@@ -26,7 +26,7 @@ function BeamDest() {
   }
   function createBeamDest() {
     let beam_destination = prompt('Enter Beam Destination');
-    fetch('http://localhost:3001/beamdest', {
+    fetch('/api/aosd-shift-reporting-backend/beamdest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function BeamDest() {
   }
   function deleteBeamDest() {
     let id = prompt('Enter Beam Destination Id');
-    fetch(`http://localhost:3001/beamdest/${id}`, {
+    fetch(`/api/aosd-shift-reporting-backend/beamdest/${id}`, {
       method: 'DELETE',
     })
       .then(response => {
