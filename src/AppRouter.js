@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ShiftCalendar from './pages/ShiftCalendar/ShiftCalendar';
 import ProgramCalendar from './pages/ProgramCalendar/ProgramCalendar';
 import BeamDest from './pages/BeamDestination/BeamDest';
+import AccelSystems from './pages/AccelSystems/AccelSystems';
 import Home from './pages/Home'; 
 import Sidebar from './Components/Sidebar'; // Import Sidebar component
 import Layout from './layout/Layout';
@@ -19,6 +20,7 @@ function AppRouter() {
           <Route path="/ShiftCalendar" component={ShiftCalendar} />
           <Route path="/ProgramCalendar" component={ProgramCalendar} />
           <Route path="/BeamDest" component={BeamDest} />
+          <Route path="/AccelSystems" component={AccelSystems} />
          </Switch>
         </div>
       </Layout>
