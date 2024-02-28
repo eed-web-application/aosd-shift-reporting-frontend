@@ -11,7 +11,7 @@ function DataTable() {
   useEffect(() => {
     // Make an API request to fetch data from your backend server
 //    axios.get('/api/aosd-shift-reporting-backend')
-    fetch('/api/aosd-shift-reporting-backend')
+    fetch('/api/aosd-shift-reporting-backend/shiftdata')
       .then(response => {
         setData(response.data);
       })
