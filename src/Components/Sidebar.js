@@ -109,6 +109,22 @@ function Sidebar() {
           </Link>
         </div>
 
+        <div>
+          <Link to="/AccelSystems">
+            <button
+              onClick={() => handleClick("AccelSystems", "/AccelSystems")}
+              className={`icon-button ${
+                activeButton === "/AccelSystems" ? "active-button" : ""
+              }`}
+            >
+              <div className="button-label">
+                <FontAwesomeIcon icon={faBox} className="icon" title="Accel Systems" />
+                <span className="label">AccelSystems</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+
       </ul>
     </div>
 
