@@ -16,7 +16,7 @@ function ShiftCalendar() {
   
   function getShiftCal() {
     console.log("Calling getShiftCal...");
-    fetch('/api/aosd-shift-reporting-backend/')
+    fetch('/api/aosd-shift-reporting-backend/shiftdata')
       .then(response => {
         return response.text();
       })
