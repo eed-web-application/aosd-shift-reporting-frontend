@@ -24,8 +24,8 @@ function DataTable() {
     // Define the column definitions for Ag-Grid
     const columnDefs = [
       { headerName: 'Shift Id', field: 'shift_id', sortable: true, filter: true },
-      { headerName: 'Start Time', field: 'start_time', sortable: true, filter: true },
-      { headerName: 'End Time', field: 'end_time', sortable: true, filter: true },
+      { headerName: 'Start Time', field: 'start_time', sortable: true, filter: true, editable: true },
+      { headerName: 'End Time', field: 'end_time', sortable: true, filter: true, editable: true },
       
       // Add more columns as needed
     ];

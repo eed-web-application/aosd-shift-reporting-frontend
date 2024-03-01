@@ -35,7 +35,7 @@ function ShiftCalendar() {
       body: JSON.stringify({start_time, end_time}),
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
       })
       .then(data => {
         alert(data);
@@ -48,7 +48,7 @@ function ShiftCalendar() {
       method: 'DELETE',
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
       })
       .then(data => {
         alert(data);

@@ -24,8 +24,8 @@ function DataTable() {
     // Define the column definitions for Ag-Grid
     const columnDefs = [
       { headerName: 'System Id', field: 'system_id', sortable: true, filter: true },
-      { headerName: 'System Name', field: 'system_name', sortable: true, filter: true },
-      { headerName: 'Active', field: 'active_flag', sortable: true, filter: true },
+      { headerName: 'System Name', field: 'system_name', sortable: true, filter: true, editable: true },
+      { headerName: 'Active', field: 'active_flag', sortable: true, filter: true, editable: true },
         ];
 
   

@@ -23,7 +23,7 @@ function DataTable() {
     // Define the column definitions for Ag-Grid
     const columnDefs = [
       { headerName: 'Beam Dest Id', field: 'beam_dest_id', sortable: true, filter: true },
-      { headerName: 'Beam Destination', field: 'beam_destination', sortable: true, filter: true },
+      { headerName: 'Beam Destination', field: 'beam_destination', sortable: true, filter: true, editable: true },
         ];
 
   
