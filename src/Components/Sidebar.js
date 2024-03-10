@@ -125,6 +125,22 @@ function Sidebar() {
           </Link>
         </div>
 
+        <div>
+          <Link to="/ShiftInfo">
+            <button
+              onClick={() => handleClick("ShiftInfo", "/ShiftInfo")}
+              className={`icon-button ${
+                activeButton === "/ShiftInfo" ? "active-button" : ""
+              }`}
+            >
+              <div className="button-label">
+                <FontAwesomeIcon icon={faBox} className="icon" title="Shift Info" />
+                <span className="label">ShiftInfo</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+
       </ul>
     </div>
 
