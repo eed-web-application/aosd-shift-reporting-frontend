@@ -4,6 +4,7 @@ import ShiftCalendar from './pages/ShiftCalendar/ShiftCalendar';
 import ProgramCalendar from './pages/ProgramCalendar/ProgramCalendar';
 import BeamDest from './pages/BeamDestination/BeamDest';
 import AccelSystems from './pages/AccelSystems/AccelSystems';
+import ShiftInfo from './pages/ShiftComments/ShiftInfo';
 import Home from './pages/Home'; 
 import Sidebar from './Components/Sidebar'; // Import Sidebar component
 import Layout from './layout/Layout';
@@ -21,6 +22,7 @@ function AppRouter() {
           <Route path="/ProgramCalendar" component={ProgramCalendar} />
           <Route path="/BeamDest" component={BeamDest} />
           <Route path="/AccelSystems" component={AccelSystems} />
+          <Route path="/ShiftInfo" component={ShiftInfo} />
          </Switch>
         </div>
       </Layout>
