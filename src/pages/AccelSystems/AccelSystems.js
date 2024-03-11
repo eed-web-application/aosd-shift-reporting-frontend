@@ -30,7 +30,8 @@ function AccelSystems() {
       body: JSON.stringify({system_name}),
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
+//        return response.text();
       })
       .then(data => {
         alert(data);
@@ -43,7 +44,8 @@ function AccelSystems() {
       method: 'DELETE',
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
+//        return response.text();
       })
       .then(data => {
         alert(data);

@@ -31,7 +31,7 @@ function BeamDest() {
       body: JSON.stringify({beam_destination}),
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
       })
       .then(data => {
         alert(data);
@@ -44,7 +44,7 @@ function BeamDest() {
       method: 'DELETE',
     })
       .then(response => {
-        return response.text();
+        window.location.reload();
       })
       .then(data => {
         alert(data);
