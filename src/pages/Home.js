@@ -1,5 +1,5 @@
 import React from 'react';
-import SLACImage from '../Components/SLACcampus.jpg';
+//import SLACImage from '../Components/SLACcampus.jpg';
 
 function Home() {
   // Define a style object for the heading

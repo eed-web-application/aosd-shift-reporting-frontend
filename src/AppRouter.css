@@ -1,0 +1,17 @@
+/* AppRouter.css */
+
+.app {
+    display: flex;
+  }
+  
+  .sidebar {
+    /* Your existing styles for the Sidebar */
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px; /* Adjust as needed */
+  }
+  
+  /* Add any additional styling as needed */
+  

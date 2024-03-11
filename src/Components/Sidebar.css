@@ -1,26 +1,73 @@
 /* Sidebar.css */
 
-.sidebar {
-  width: 200px;
-  height: 100%;
-  background-color: #f0f0f0;
+.Sidebar {
+  width: 150px;
+  min-height: 100vh;
+  background-color: #263238; /* Dark blue-grey background */
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar h2 {
-  margin-bottom: 20px;
+.logo-container {
+  text-align: center; /* Center the logo */
+  margin-bottom: 20px; /* Add margin between logo and buttons */
+  
+}
+a {
+  text-decoration: none; /* Removes underline */
 }
 
-.sidebar ul {
+.logo {
+  width: 110px; /* Set the width of your logo */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px;
+}
+.Sidebar ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar ul li {
-  padding: 10px 0;
+.Sidebar ul li {
   cursor: pointer;
 }
 
-.sidebar ul li:hover {
-  background-color: #ddd;
+.Sidebar ul li:hover {
+  background-color: #37474f; /* Darker blue-grey on hover */
 }
+
+.icon-button {
+  background-color: #546e7a; /* Teal color for buttons */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide content that overflows */
+  margin: 8px 0; /* Add margin to the top and bottom */
+  width: 100%; /* Set a fixed width for all buttons */
+}
+
+.icon-button .label {
+  margin-top: 8px;
+  color: #ffffff; /* White text color */
+  text-align: center; /* Center the text */
+}
+
+.icon-container {
+  margin-bottom: 4px; /* Add space between icon and label */
+}
+
+.icon {
+  font-size: 24px; /* Larger icon size */
+  color: #ffffff; /* White icon color */
+}
+
+.active-button {
+  background-color: #009688; /* Teal color for active button */
+}
+
