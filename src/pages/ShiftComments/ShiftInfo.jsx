@@ -1,6 +1,7 @@
 // ShiftInfo.jsx
 // Front end for entering Shift Data
 import React, { useState } from 'react';
+import './DowntimeEntry.css'; // Import the CSS file
 import axios from 'axios';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -14,6 +15,11 @@ function ShiftInfo() {
 
   const [commentsData, setCommentsData] = useState([{ comments: '' }]);
 
+  const [downtimeData, setDowntimeData] = useState([
+    { description: '', category: '', system: '', 
+      start: null, end: null, caterId: '', elogUrl: ''},
+  ]);
+
   const handleShiftChange = (name, date) => {
     setShiftDates({ ...shiftDates, [name]: date });
   };
@@ -25,6 +31,12 @@ function ShiftInfo() {
     setCommentsData(updatedCommentsData);
   };
 
+  const handleDowntimeChange = (index, fieldName, value) => {
+    const updatedDowntimeData = [...downtimeData];
+    updatedDowntimeData[index] = { ...updatedDowntimeData[index], [fieldName]: value };
+    setDowntimeData(updatedDowntimeData);
+  };
+
   const handleAddComment = () => {
     setCommentsData([...commentsData, { comments: '' }]);
   };
@@ -33,6 +45,18 @@ function ShiftInfo() {
     const updatedCommentsData = [...commentsData];
     updatedCommentsData.splice(index, 1);
     setCommentsData(updatedCommentsData);
+  };
+
+  const handleAddDowntime = () => {
+    setDowntimeData([...downtimeData, 
+      { description: '', category: '', system: '', 
+      start: null, end: null, caterId: '', elogUrl: '' }]);
+  };
+
+  const handleRemoveDowntime = (index) => {
+    const updatedDowntimeData = [...downtimeData];
+    updatedDowntimeData.splice(index, 1);
+    setDowntimeData(updatedDowntimeData);
   };
 
   function createShiftInfo(event) {
@@ -47,6 +71,7 @@ function ShiftInfo() {
       .post('/api/aosd-shift-reporting-backend/shiftDates', {
         shiftDates: formattedShiftDates,
         commentsData,
+        downtimeData,
       })
       .then((response) => {
         console.log('Response:', response);
@@ -63,7 +88,7 @@ function ShiftInfo() {
 
   return (
     <div>
-      <h1>Shift Data & Comments Form</h1>
+      <h1>Shift Reporting Form</h1>
       <form onSubmit={createShiftInfo}>
         <label>
           Start Time:
@@ -91,12 +116,12 @@ function ShiftInfo() {
           <div key={index}>
             <label>
               Comment:
-              <input
-                type="text"
+	      <textarea
                 name="comments"
                 value={comments.comments}
                 onChange={(e) => handleCommentChange(index, e)}
                 required
+              className="expandable-textarea"
               />
             </label>
             <button type="button" onClick={() => handleRemoveComment(index)}>
@@ -106,6 +131,76 @@ function ShiftInfo() {
         ))}
         <button type="button" onClick={handleAddComment}>
           Add Comment
+        </button>
+        <br />
+        <h2>Downtime Entry</h2>
+        <div className="downtime-header-row">
+          <div className="downtime-header-label">Description</div>
+          <div className="downtime-header-label">Category</div>
+          <div className="downtime-header-label">System</div>
+          <div className="downtime-header-label">Start</div>
+          <div className="downtime-header-label">End</div>
+          <div className="downtime-header-label">Cater ID</div>
+          <div className="downtime-header-label">Elog URL</div>
+        </div>
+
+        {downtimeData.map((downtime, index) => (
+          <div key={index} className="downtime-data-row">
+	  <textarea
+            name="description"
+            value={downtime.description}
+            onChange={(e) => handleDowntimeChange(index, 'description', e.target.value)}
+            className={index === 0 ? "expandable-textarea" : ""}
+            required
+          />
+	      <input
+                type="text"
+                name="category"
+                value={downtime.category}
+                onChange={(e) => handleDowntimeChange(index, 'category', e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="system"
+                value={downtime.system}
+                onChange={(e) => handleDowntimeChange(index, 'system', e.target.value)}
+              />
+	      <DatePicker
+		selected={downtime.start}
+		onChange={(date) => handleDowntimeChange(index, 'start', date)}
+		showTimeSelect
+		dateFormat="Pp"
+		placeholderText="Select Date and Time"
+                required
+	      />
+	      <DatePicker
+		selected={downtime.end}
+		onChange={(date) => handleDowntimeChange(index, 'end', date)}
+		showTimeSelect
+		dateFormat="Pp"
+		placeholderText="Select Date and Time"
+                required
+              />
+              <input
+                type="text"
+                name="caterId"
+                value={downtime.caterId}
+                onChange={(e) => handleDowntimeChange(index, 'caterId', e.target.value)}
+              />
+              <input
+                type="text"
+                name="elogUrl"
+                value={downtime.elogUrl}
+                onChange={(e) => handleDowntimeChange(index, 'elogUrl', e.target.value)}
+              />
+            <button type="button" onClick={() => handleRemoveDowntime(index)}>
+              Remove Downtime Entry
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={handleAddDowntime}>
+          Add Downtime Entry
         </button>
         <br />
         <button type="submit">Submit Shift Data</button>
