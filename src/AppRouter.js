@@ -8,12 +8,13 @@ import ShiftInfo from './pages/ShiftComments/ShiftInfo';
 import Home from './pages/Home'; 
 import Sidebar from './Components/Sidebar'; // Import Sidebar component
 import Layout from './layout/Layout';
+import './AppRouter.css';
 
 function AppRouter() {
   return (
     <Router basename="/aosd-shift-reporting-frontend">
      <div className="app">
-      <Layout>
+
        <Sidebar />
         <div className="content">
          <Switch>
@@ -25,7 +26,7 @@ function AppRouter() {
           <Route path="/ShiftInfo" component={ShiftInfo} />
          </Switch>
         </div>
-      </Layout>
+
      </div>
     </Router>
   );

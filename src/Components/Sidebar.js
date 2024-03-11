@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
-import { faHome, faNewspaper, faCog, faBox, faTicket, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faNewspaper, faCog, faBox, faTicket, faLock, faCalendar, faCalendarAlt, faMapMarker, faInfo } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
+import logo from "../Components/slac-logo.png"; // Update the path to your logo image
 
 function Sidebar() {
   // Use the current location to determine the active button
@@ -41,11 +42,12 @@ function Sidebar() {
 
   return (
     <div className={`Sidebar ${isCollapsed ? "collapsed" : ""}`}>
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="logo" />
+      </div>
       <ul>
         {/* Sidebar buttons with links */}
-        <br></br>
-
-        <div>
+      
           <Link to="/home">
             <button
               onClick={() => handleClick("home", "/home")}
@@ -53,15 +55,15 @@ function Sidebar() {
                 activeButton === "/home" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faHome} className="icon" title="Home" />
+              <div className="button-label"> <div className="icon-container">
+                <FontAwesomeIcon icon={faHome} className="icon" title="Home" />  </div>
                 <span className="label">Home</span>
-              </div>
+                </div>
             </button>
           </Link>
-        </div>
+        
 
-        <div>
+        
           <Link to="/ShiftCalendar">
             <button
               onClick={() => handleClick("ShiftCalendar", "/ShiftCalendar")}
@@ -69,15 +71,15 @@ function Sidebar() {
                 activeButton === "/ShiftCalendar" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faBox} className="icon" title="Shift Calendar" />
-                <span className="label">ShiftCalendar</span>
+              <div className="button-label">  <div className="icon-container">
+              <FontAwesomeIcon icon={faCalendar} className="icon" title="Shift Calendar" />  </div>
+                <span className="label">Shift Calendar</span>
               </div>
             </button>
           </Link>
-        </div>
+        
 
-        <div>
+        
           <Link to="/ProgramCalendar">
             <button
               onClick={() => handleClick("ProgramCalendar", "/ProgramCalendar")}
@@ -85,15 +87,15 @@ function Sidebar() {
                 activeButton === "/ProgramCalendar" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faBox} className="icon" title="Program Calendar" />
-                <span className="label">ProgramCalendar</span>
+              <div className="button-label">  <div className="icon-container">
+                <FontAwesomeIcon icon={faCalendarAlt} className="icon" title="Program Calendar" />  </div>
+                <span className="label">Program Calendar</span>
               </div>
             </button>
           </Link>
-        </div>
+        
 
-        <div>
+        
           <Link to="/BeamDest">
             <button
               onClick={() => handleClick("BeamDestination", "/BeamDestination")}
@@ -101,15 +103,13 @@ function Sidebar() {
                 activeButton === "/BeamDestination" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faBox} className="icon" title="Beam Destination" />
-                <span className="label">BeamDestination</span>
+              <div className="button-label">  <div className="icon-container">
+                <FontAwesomeIcon icon={faMapMarker} className="icon" title="Beam Destination" />  </div>
+                <span className="label">Beam Destination</span>
               </div>
             </button>
           </Link>
-        </div>
-
-        <div>
+        
           <Link to="/AccelSystems">
             <button
               onClick={() => handleClick("AccelSystems", "/AccelSystems")}
@@ -117,15 +117,15 @@ function Sidebar() {
                 activeButton === "/AccelSystems" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faBox} className="icon" title="Accel Systems" />
-                <span className="label">AccelSystems</span>
+              <div className="button-label">  <div className="icon-container">
+                <FontAwesomeIcon icon={faCog} className="icon" title="Accel Systems" />  </div>
+                <span className="label">Accel Systems</span>
               </div>
             </button>
           </Link>
-        </div>
+        
 
-        <div>
+        
           <Link to="/ShiftInfo">
             <button
               onClick={() => handleClick("ShiftInfo", "/ShiftInfo")}
@@ -133,13 +133,13 @@ function Sidebar() {
                 activeButton === "/ShiftInfo" ? "active-button" : ""
               }`}
             >
-              <div className="button-label">
-                <FontAwesomeIcon icon={faBox} className="icon" title="Shift Info" />
-                <span className="label">ShiftInfo</span>
+              <div className="button-label"> 
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faInfo} className="icon" title="Shift Reporting" />  </div>
+                <span className="label">Shift Reporting</span>
               </div>
             </button>
           </Link>
-        </div>
 
       </ul>
     </div>

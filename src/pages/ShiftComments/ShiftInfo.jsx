@@ -1,6 +1,6 @@
 // ShiftInfo.jsx
 // Front end for entering Shift Data
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DowntimeEntry.css'; // Import the CSS file
 import axios from 'axios';
 import moment from 'moment';
@@ -13,12 +13,33 @@ function ShiftInfo() {
     endTime: new Date(),
   });
 
+
   const [commentsData, setCommentsData] = useState([{ comments: '' }]);
 
+  const staticCategory = ["Configuration Change", "Tuning", "Accelerator Down", "User Off", "Scheduled Off"];
+  
+// Store the selected system_id in the form data
   const [downtimeData, setDowntimeData] = useState([
-    { description: '', category: '', system: '', 
+    { description: '', category: '', selectedSystemId: '', 
       start: null, end: null, caterId: '', elogUrl: ''},
   ]);
+
+  const [accelsystem, setAccelSystem] = useState([]);
+
+  // Fetch the list of systems when the component mounts
+  useEffect(() => {
+    const fetchSystems = async () => {
+      try {
+        const response = await axios.get('/api/aosd-shift-reporting-backend/accelsystem');
+        setAccelSystem(response.data);
+      } catch (error) {
+        console.error('Error fetching systems:', error.message);
+      }
+    };
+
+    fetchSystems();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
+
 
   const handleShiftChange = (name, date) => {
     setShiftDates({ ...shiftDates, [name]: date });
@@ -49,7 +70,7 @@ function ShiftInfo() {
 
   const handleAddDowntime = () => {
     setDowntimeData([...downtimeData, 
-      { description: '', category: '', system: '', 
+      { description: '', category: '', selectedSystemId: '', 
       start: null, end: null, caterId: '', elogUrl: '' }]);
   };
 
@@ -116,7 +137,7 @@ function ShiftInfo() {
           <div key={index}>
             <label>
               Comment:
-	      <textarea
+	           <textarea
                 name="comments"
                 value={comments.comments}
                 onChange={(e) => handleCommentChange(index, e)}
@@ -146,42 +167,54 @@ function ShiftInfo() {
 
         {downtimeData.map((downtime, index) => (
           <div key={index} className="downtime-data-row">
-	  <textarea
+	        <textarea
             name="description"
             value={downtime.description}
             onChange={(e) => handleDowntimeChange(index, 'description', e.target.value)}
             className={index === 0 ? "expandable-textarea" : ""}
             required
           />
-	      <input
-                type="text"
-                name="category"
-                value={downtime.category}
-                onChange={(e) => handleDowntimeChange(index, 'category', e.target.value)}
+          <select
+              name="category"
+              value={downtime.category}
+              onChange={(e) => handleDowntimeChange(index, 'category', e.target.value)}
+          >
+              <option value="" disabled>Select a Category</option>
+              {staticCategory.map((category) => (
+                <option key={category} value={category}>{category}</option>
+              ))}
+          </select>
+          <select
+            name="selectedSystemId"
+            value={downtime.selectedSystemId}
+            onChange={(e) => handleDowntimeChange(index, 'selectedSystemId', e.target.value)}
+          >
+            <option value="" disabled>Select a System</option>
+            {accelsystem.map((system) => (
+              <option key={system.system_id} value={system.system_id}>
+                {system.system_name}
+              </option>
+            ))}
+          </select>
+
+            <DatePicker
+              selected={downtime.start}
+              onChange={(date) => handleDowntimeChange(index, 'start', date)}
+              showTimeSelect
+              dateFormat="Pp"
+              placeholderText="Select Date and Time"
+              required
+              className='date-height'
+            />
+    	      <DatePicker
+                selected={downtime.end}
+                onChange={(date) => handleDowntimeChange(index, 'end', date)}
+                showTimeSelect
+                dateFormat="Pp"
+                placeholderText="Select Date and Time"
                 required
-              />
-              <input
-                type="text"
-                name="system"
-                value={downtime.system}
-                onChange={(e) => handleDowntimeChange(index, 'system', e.target.value)}
-              />
-	      <DatePicker
-		selected={downtime.start}
-		onChange={(date) => handleDowntimeChange(index, 'start', date)}
-		showTimeSelect
-		dateFormat="Pp"
-		placeholderText="Select Date and Time"
-                required
-	      />
-	      <DatePicker
-		selected={downtime.end}
-		onChange={(date) => handleDowntimeChange(index, 'end', date)}
-		showTimeSelect
-		dateFormat="Pp"
-		placeholderText="Select Date and Time"
-                required
-              />
+                className='date-height'
+                />
               <input
                 type="text"
                 name="caterId"
@@ -194,8 +227,8 @@ function ShiftInfo() {
                 value={downtime.elogUrl}
                 onChange={(e) => handleDowntimeChange(index, 'elogUrl', e.target.value)}
               />
-            <button type="button" onClick={() => handleRemoveDowntime(index)}>
-              Remove Downtime Entry
+            <button type="button">
+              Add Program
             </button>
           </div>
         ))}

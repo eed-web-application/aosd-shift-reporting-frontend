@@ -1,5 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function(app) {
+
   // Proxy middleware for api/shiftdata
   app.use(
     '/api/aosd-shift-reporting-backend',
@@ -13,11 +14,11 @@ module.exports = function(app) {
 /*
    // Proxy middleware for api/programdata
    app.use(
-    '/api/aosd-shift-reporting-backend/programdata',
+    '/api/aosd-shift-reporting-backend',
     createProxyMiddleware({
       target: 'http://localhost:3001',
       changeOrigin: true,
-      pathRewrite: {'^/api/aosd-shift-reporting-backend/programdata': ''},
+      pathRewrite: {'^/api/aosd-shift-reporting-backend': ''},
     })
   );
 */
