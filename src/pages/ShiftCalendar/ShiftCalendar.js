@@ -92,6 +92,7 @@ function ShiftCalendar() {
                 onChange={(date) => setStartTime(date)}
                 showTimeSelect
                 dateFormat="Pp"
+                placeholderText="Select Date and Time"
                 required
               />
             </Form.Group>
@@ -102,6 +103,7 @@ function ShiftCalendar() {
                 onChange={(date) => setEndTime(date)}
                 showTimeSelect
                 dateFormat="Pp"
+                placeholderText="Select Date and Time"
                 required
               />
             </Form.Group>

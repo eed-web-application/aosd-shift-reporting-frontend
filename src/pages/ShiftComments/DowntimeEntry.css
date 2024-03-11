@@ -1,0 +1,35 @@
+/* DowntimeEntry.css */
+.downtime-header-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.downtime-data-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.downtime-header-label {
+  flex: 1;
+  text-align: left;
+}
+
+.expandable-textarea {
+  resize: vertical; /* Allow vertical resizing */
+  width: 600px;
+  height: 3.5em; /* Default height for one line, adjust as needed */
+  overflow-y: hidden; /* Hide excess content when collapsed */
+  max-height: 200px; /* Set a maximum height if needed */
+}
+
+.downtime-data-row textarea:first-child {
+  resize: vertical;
+  width: 200px;
+  height: 2em; /* Default height for one line, adjust as needed */
+  overflow-y: hidden; /* Hide excess content when collapsed */
+  max-height: 200px;
+}
+/* Add more styles as needed */
