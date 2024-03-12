@@ -46,6 +46,11 @@ function DataTable({ data: propsData }) {
       valueFormatter: params => {
         return moment(params.value).tz('America/Los_Angeles').format('YYYY-MM-DD HH:mm');
       },
+    },
+    { headerName: 'Shift Comments', 
+    field: 'comments', 
+    sortable: true, 
+    filter: true 
     }
   ];
 

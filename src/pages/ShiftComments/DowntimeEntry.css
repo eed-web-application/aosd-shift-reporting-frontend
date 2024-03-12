@@ -1,4 +1,50 @@
-/* DowntimeEntry.css */
+body {
+  margin: 0; /* Reset default body margin */
+}
+
+.container {
+  margin-left: 0; /* Set the left margin of the container to 0 */
+}
+
+.comment-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.comment-row {
+  display: flex;
+  align-items: center;
+}
+
+.comment-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.comment-controls {
+  display: flex;
+  margin-left: 10px;
+}
+.comment-controls button {
+ height: 38px;
+}
+.comment-textarea {
+  margin-right: 10px;
+  width: 200px; /* Set the width as needed */
+  height: 38px;
+}
+
+
+.comment-container Form.Group {
+  margin-right: 16px;
+}
+
+.comment-container Button {
+  align-self: flex-end;
+}
+
 .downtime-header-row {
   display: flex;
   justify-content: space-between;
@@ -6,36 +52,61 @@
   margin-bottom: 8px;
 }
 
+
 .downtime-data-row {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+ 
 }
 
-.downtime-header-label {
-  flex: 1;
-  text-align: left;
+
+.downtime-data-row textarea,
+.downtime-data-row select,
+.downtime-data-row input {
+  /* width: 200px;  */
+  height: 60px; 
+}
+
+
+.date-picker-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.date-picker-label:last-child {
+  margin-bottom: 0;
 }
 
 .expandable-textarea {
-  resize: both; 
-  width: 600px;
-  height: 3.5em; /* Default height for one line, adjust as needed */
-  overflow-y: hidden; /* Hide excess content when collapsed */
-  max-height: 200px; /* Set a maximum height if needed */
+  resize: both;
+  width: 100%;
+  height: 80px; /* Set the height as needed */
+  overflow-y: hidden;
+  max-height: 200px;
 }
 
-.date-height {
-  height: 3.5em; /* Default height for one line, adjust as needed */
-  }
+.downtime-header-label{
+  padding-left: 60px;
+}
+
+.submitShift{
+  margin-top: 10px;
+  width: 300px;
+}
 
 .downtime-data-row textarea:first-child {
   resize: both;
   min-width: 200px;
-  max-width: 400px;
+  max-width: 200px;
   width: 200px;
-  height: 3.5em; /* Default height for 2 lines, adjust as needed */
-  overflow-y: hidden; /* Hide excess content when collapsed */
+  /* height: 80px; Set the height as needed */
+  overflow-y: hidden;
   max-height: 200px;
 }
-/* Add more styles as needed */
+
+
+.downtime-data-row Button {
+  height: 60px; /* Set the height as needed, matching the input fields */
+}
